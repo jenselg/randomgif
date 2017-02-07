@@ -1,0 +1,27 @@
+page-home {
+	.bar { background-image: none !important; }
+	.content-md {
+		background: #f3f3f3;
+	}
+	ion-navbar ion-row ion-col, ion-content ion-row ion-col, ion-footer ion-toolbar ion-title {
+		text-align: center;
+	}
+	ion-navbar ion-row ion-col {
+		color: white;
+	}
+	.toolbar-background {
+		background: black;
+	}
+	.toolbar-background-md {
+		border-color: black;
+	}
+	.white-font {
+		color: white;
+	}
+	ion-footer .toolbar-title {
+		color: white !important;
+	}
+	.card-content-md {
+		padding: 1px 16px;
+	}
+}

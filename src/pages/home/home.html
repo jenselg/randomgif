@@ -1,0 +1,69 @@
+<ion-header primary>
+
+  <ion-navbar>
+    <ion-row>
+
+      <ion-col>
+        <span>TIME
+          <strong>WASTED</strong>
+        </span>
+        <br/>
+        <span style="font-size: 16px;">
+          <span>{{hours}}<strong>H</strong></span>&nbsp;
+          <span>{{minutes}}<strong>M</strong></span>&nbsp;
+          <span>{{seconds}}<strong>S</strong></span>
+        </span>
+      </ion-col>
+
+      <ion-col>
+        <img src="images/Poweredby_100px-Black_VertText.png" />
+      </ion-col>
+
+      <ion-col>
+        <span>GIFS
+          <strong>LOADED</strong>
+        </span>
+        <br/>
+        <span style="font-size: 16px;">{{counter}}</span>
+      </ion-col>
+
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="PULL TO RELOAD"></ion-refresher-content>
+  </ion-refresher>
+
+    <div *ngFor="let entry of entries">
+      <ion-card>
+        <img [src]="entry.data.fixed_height_downsampled_url"/>
+        <ion-card-content [style.background]="colorBg">
+
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small (click)="shareGif(entry.data.fixed_height_downsampled_url, entry.data.image_url)">
+                <ion-icon name="md-share" class="white-font"></ion-icon>
+                <div class="white-font">SHARE THIS GIF</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small (click)="saveGif(entry.data.image_url);">
+                <ion-icon name="md-eye" class="white-font"></ion-icon>
+                <div class="white-font">VIEW ORIGINAL</div>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
